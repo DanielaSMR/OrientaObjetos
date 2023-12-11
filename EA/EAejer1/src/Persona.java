@@ -164,6 +164,11 @@ public class Persona {
 
         Persona Dan = new Persona(nombre, edad, sexo, peso, altura);
 
+        Persona Mar = new Persona(nombre,edad,sexo);
+
+        Persona Sol = new Persona();
+
+        
 
     }
 
