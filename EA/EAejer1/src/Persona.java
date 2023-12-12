@@ -9,9 +9,9 @@ public class Persona {
     // final para hacer el valor constante
     private final static char sexo_def = 'H';
     private int peso = 0;
-    private int altura = 0;
+    private float altura = 0;
 
-    private int contPersonas;
+    static int contPersonas;
 
     private final static int INFRAPESO_DEF = -1;
     private final static int IDEALPESO_DEF = 0;
@@ -35,7 +35,7 @@ public class Persona {
 
     }
 
-    public Persona(String nombre,int edad,char sexo,int peso,int altura){
+    public Persona(String nombre,int edad,char sexo,int peso,float altura){
         
         this.nombre = nombre;
         this.edad = edad;
@@ -58,35 +58,38 @@ public class Persona {
 
     }
 
-    public void comprobarSexo(char sexo){
+    public static char comprobarSexo(char sexo){
     
         if(sexo == 'H'){
-            this.sexo = 'H';
+            return sexo = 'H';
         }else if(sexo == 'M'){
-            this.sexo = 'M';
+            return sexo = 'M';
         }else{
-            this.sexo = sexo_def;
+            return sexo = sexo_def;
         }
 
     }
 
 
-    public int calcularIMC(int peso,int altura){
-        int IMC = peso / (altura*altura);
-
-        if(IMC < 20){
+    public int calcularIMC(float altura,int peso){
+        if(peso == 0 && altura == 0){
             return INFRAPESO_DEF;
-        }else if(IMC >= 20 && IMC <= 25){
-            return IDEALPESO_DEF;
         }else{
-            return SOBREPESO_DEF;
-        }
+            float IMC = (float)peso / (altura*altura);
 
+            if(IMC < 20){
+                return INFRAPESO_DEF;
+            }else if(IMC >= 20 && IMC <= 25){
+                return IDEALPESO_DEF;
+            }else{
+                return SOBREPESO_DEF;
+            }
+        }
     }
 
     public String toString(){
 
-        return "Paciente: " + nombre + " \n" + "Edad: " + edad + "años \n" + "Sexo: " + sexo + "Peso: " + peso + "kg \n" + "Altura: " + altura + "metros";
+        return "Paciente: " + nombre + " \n" + "Edad: " + edad + "años \n" + "Sexo: " + sexo + "\n" + "Peso: " + peso + "kg \n" + "Altura: " + altura + "Cm" + "\n";
     
     }
 
@@ -120,7 +123,7 @@ public class Persona {
         this.peso = peso;
     }
 
-    public int getAltura() {
+    public float getAltura() {
         return altura;
     }
 
@@ -132,7 +135,7 @@ public class Persona {
         this.contPersonas = contPersonas;
     }
 
-    public void setAltura(int altura) {
+    public void setAltura(float altura) {
         this.altura = altura;
     }
 
@@ -151,16 +154,20 @@ public class Persona {
 
         System.out.println("Escribe tu nombre");
         String nombre = sc.nextLine();
+
         System.out.println("Escribe tu edad");
         int edad = sc.nextInt();
+
         System.out.println("Escribe tu sexo");
-        char sexo;
-        sexo = sc.next().charAt(0);
-        System.out.println(sexo);
+        char sexo = sc.next().charAt(0);
+        sexo = comprobarSexo(sexo);
+
         System.out.println("Escribe tu peso");
         int peso = sc.nextInt();
+
         System.out.println("Escribe tu altura");
-        int altura = sc.nextInt();
+        float altura = sc.nextFloat();
+        
 
         Persona Dan = new Persona(nombre, edad, sexo, peso, altura);
 
@@ -168,7 +175,21 @@ public class Persona {
 
         Persona Sol = new Persona();
 
-        
+
+        System.out.println(Dan.calcularIMC(Dan.altura,Dan.peso));
+        System.out.println(Mar.calcularIMC(Mar.altura,Mar.peso));
+        System.out.println(Sol.calcularIMC(Sol.altura,Sol.peso));
+
+        System.out.println("Es mayor de edad?" + Dan.esMayorDeEdad(Dan.edad));
+        System.out.println("Es mayor de edad?" + Mar.esMayorDeEdad(Mar.edad));
+        System.out.println("Es mayor de edad?" + Sol.esMayorDeEdad(Sol.edad));
+        System.out.println();
+
+        System.out.println(Dan.toString());
+        System.out.println(Mar.toString());
+        System.out.println(Sol.toString());
+
+        System.out.println("Has creado: " + Persona.contPersonas);
 
     }
 
