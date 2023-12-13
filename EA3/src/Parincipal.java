@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Principal {
+public class Parincipal {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Escribe la longitud de la contraseña");
