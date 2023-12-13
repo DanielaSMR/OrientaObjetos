@@ -1,8 +1,14 @@
 public class Raices {
 
-    private int a = 3;
-    private int b = 7;
-    private int c = 9;
+    private int a;
+    private int b;
+    private int c;
+
+    public Raices(int a,int b,int c){
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
 
     public void obtenerRaices(){
 
@@ -14,7 +20,7 @@ public class Raices {
 
     public void obtenerRaiz(){
 
-        int funcion = (-b)/(2*a);
+        int funcion = -b/(2*a);
         System.out.println("Obtener Raiz: " + funcion);
 
     }
@@ -30,5 +36,24 @@ public class Raices {
             return false;
 
     }
+
+    public boolean tieneRaiz(){
+        if(getDiscriminante() == 0){
+            return true;
+        }else 
+            return false;
+
+    }
+
+    public void calcular(){
+        if(tieneRaices() == true){
+            obtenerRaices();
+        }else if(tieneRaiz() == true){
+            obtenerRaiz();
+        }else{
+            
+        }
+    }
+
 
 }
