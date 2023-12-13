@@ -53,7 +53,7 @@ public class Persona {
 
     /*Zona metodos */
 
-    public boolean esMayorDeEdad(int edad){
+    public boolean esMayorDeEdad(){
 
         if(edad >= 18){
             return true;
@@ -220,9 +220,9 @@ public class Persona {
         System.out.println(Mar.calcularIMC(Mar.altura,Mar.peso));
         System.out.println(Sol.calcularIMC(Sol.altura,Sol.peso));
 
-        System.out.println("Es mayor de edad?" + Dan.esMayorDeEdad(Dan.edad));
-        System.out.println("Es mayor de edad?" + Mar.esMayorDeEdad(Mar.edad));
-        System.out.println("Es mayor de edad?" + Sol.esMayorDeEdad(Sol.edad));
+        System.out.println("Es mayor de edad?" + Dan.esMayorDeEdad());
+        System.out.println("Es mayor de edad?" + Mar.esMayorDeEdad());
+        System.out.println("Es mayor de edad?" + Sol.esMayorDeEdad());
         System.out.println();
 
         System.out.println(Dan.toString());
