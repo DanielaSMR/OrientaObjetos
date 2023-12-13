@@ -1,18 +1,21 @@
 import java.util.*;
 
+import javax.management.StringValueExp;
+
 public class Persona {
 
     /*Zona atributos */
     private String nombre = " ";
     private int edad = 0;
-    private char sexo = ' ';
+    private char sexo = sexo_def;
     // final para hacer el valor constante
     private final static char sexo_def = 'H';
     private int peso = 0;
     private float altura = 0;
+    private String DNI;
 
     static int contPersonas;
-
+    
     private final static int INFRAPESO_DEF = -1;
     private final static int IDEALPESO_DEF = 0;
     private final static int SOBREPESO_DEF = 1;
@@ -42,6 +45,7 @@ public class Persona {
         this.sexo = sexo;
         this.peso = peso;
         this.altura = altura;
+        DNI = generaDNI();
 
         contPersonas++;
 
@@ -71,6 +75,8 @@ public class Persona {
     }
 
 
+    
+
     public int calcularIMC(float altura,int peso){
         if(peso == 0 && altura == 0){
             return INFRAPESO_DEF;
@@ -91,6 +97,33 @@ public class Persona {
 
         return "Paciente: " + nombre + " \n" + "Edad: " + edad + "años \n" + "Sexo: " + sexo + "\n" + "Peso: " + peso + "kg \n" + "Altura: " + altura + "Cm" + "\n";
     
+    }
+
+    private String generaDNI(){
+        
+        String[] letra = {"T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"};
+
+        int[] num = new int[8];
+        String dNI = "";
+        int division = 0;
+
+        do{
+            if(division > 22){
+                dNI = "";
+            }
+            for(int cont = 0; cont < num.length-1;cont++){
+                dNI += (int) (Math.random()*8+1);
+            }
+
+            int DNINum = Integer.parseInt(dNI.substring(0, 7));
+            division = DNINum % 23;
+
+        }while(division > 22);
+
+        dNI += letra[division];
+                
+        return dNI;
+
     }
 
     
@@ -147,6 +180,13 @@ public class Persona {
         this.sexo = sexo;
     }
 
+    public String getDNI() {
+        return DNI;
+    }
+
+    public void setDNI(String dNI) {
+        DNI = dNI;
+    }
 
 
     public static void main(String[] args) {
@@ -167,7 +207,7 @@ public class Persona {
 
         System.out.println("Escribe tu altura");
         float altura = sc.nextFloat();
-        
+
 
         Persona Dan = new Persona(nombre, edad, sexo, peso, altura);
 
@@ -189,7 +229,11 @@ public class Persona {
         System.out.println(Mar.toString());
         System.out.println(Sol.toString());
 
+        System.out.println("El DNI es: " + Dan.DNI);
+
         System.out.println("Has creado: " + Persona.contPersonas);
+
+
 
     }
 
