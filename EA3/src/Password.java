@@ -15,7 +15,7 @@ public class Password {
         
     }
 
-    /*public String generarPassword(){
+    public String generarPassword(){
         
         for(int i = 0; i <= longitud;i++){
             contrasenya += (Math.random()*9 + 'a');
@@ -23,7 +23,7 @@ public class Password {
 
         return contrasenya;
 
-    }*/
+    }
 
     public int getLogintud() {
         return longitud;
