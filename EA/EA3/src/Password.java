@@ -1,6 +1,6 @@
 public class Password {
     private int longitud = 8;
-    static String contrasenya;//??
+    private String contrasenya;//??
 
     public Password(){
 
@@ -17,11 +17,21 @@ public class Password {
 
     public String generarPassword(){
         
+        int num;
+        String contras = "";
+
         for(int i = 0; i <= longitud;i++){
-            contrasenya += (Math.random()*9 + 'a');
+            num = (int) (Math.random()*3+0);
+            if(num == 0){
+                contras += (char)(Math.random()*26 + 'a');
+            }else if(num == 1){
+                contras += (int)(Math.random()*8+1);
+            }else if (num == 2){
+                contras += (char)(Math.random()*26 + 'A');
+            }
         }
 
-        return contrasenya;
+        return contras;
 
     }
 

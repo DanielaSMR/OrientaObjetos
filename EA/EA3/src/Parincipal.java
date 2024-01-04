@@ -8,7 +8,7 @@ public class Parincipal {
 
         Password contra = new Password(largo);
         
-        System.out.println(contra.contrasenya);
+        System.out.println(contra.getcontrasenya());
     }
 
 
